@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   FileCheck2,
   Globe,
@@ -52,12 +53,17 @@ export const Header: React.FC<HeaderProps> = ({
   const [isSupportMeOpen, setIsSupportMeOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement | null>(null);
+  const profileDropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!isProfileMenuOpen) return;
 
     const closeOnOutsideClick = (event: PointerEvent) => {
-      if (!profileMenuRef.current?.contains(event.target as Node)) {
+      const target = event.target as Node;
+      if (
+        !profileMenuRef.current?.contains(target) &&
+        !profileDropdownRef.current?.contains(target)
+      ) {
         setIsProfileMenuOpen(false);
       }
     };
@@ -80,7 +86,7 @@ export const Header: React.FC<HeaderProps> = ({
       <header className={`no-print sticky top-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
         theme === 'dark' ? 'bg-slate-900/90 border-slate-800 text-white' : 'bg-white/90 border-slate-200 text-slate-900'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-2 flex flex-wrap items-center justify-between gap-2 sm:gap-4">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
           {/* Brand Logo & Title */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={onGoToLanding}>
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
@@ -100,21 +106,21 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Center: Multi-User Profile Switcher */}
-          <div ref={profileMenuRef} className="relative order-3 w-full sm:order-none sm:w-auto">
+          <div ref={profileMenuRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <button
               type="button"
               onClick={() => setIsProfileMenuOpen((open) => !open)}
               aria-expanded={isProfileMenuOpen}
               aria-haspopup="listbox"
               aria-label={`Profil aktif: ${activeProfile?.name || 'belum dipilih'}. Klik untuk mengganti profil.`}
-              className={`flex min-h-11 w-full items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:min-h-9 sm:w-auto sm:min-w-52 ${
+              className={`flex h-10 w-10 items-center justify-center gap-2 rounded-xl border px-2 text-left text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:w-auto md:min-w-52 md:justify-start md:px-3 ${
                 isProfileMenuOpen
                   ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/50'
                   : 'border-slate-200 bg-slate-50 hover:border-indigo-400 dark:border-slate-700 dark:bg-slate-800/80'
               }`}
             >
               <Briefcase className="w-4 h-4 text-indigo-500" />
-              <span className="min-w-0 flex-1">
+              <span className="hidden min-w-0 flex-1 md:block">
                 <span className="block text-[10px] font-medium text-slate-500 dark:text-slate-400">
                   Profil aktif
                 </span>
@@ -122,11 +128,17 @@ export const Header: React.FC<HeaderProps> = ({
                   {activeProfile?.name || 'Pilih profil'}
                 </span>
               </span>
-              <ChevronDown className={`w-4 h-4 shrink-0 text-slate-500 transition-transform ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`hidden w-4 h-4 shrink-0 text-slate-500 transition-transform md:block ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
             </button>
+          </div>
 
-            {isProfileMenuOpen && (
-            <div className="absolute left-0 right-0 z-50 mt-2 max-h-72 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-800 dark:bg-slate-900 sm:right-auto sm:w-72" role="listbox" aria-label={t.switchProfile}>
+          {isProfileMenuOpen && createPortal(
+            <div
+              ref={profileDropdownRef}
+              className="fixed left-1/2 top-[4.5rem] z-50 max-h-[min(18rem,calc(100vh-6rem))] w-[calc(100vw-2rem)] max-w-72 -translate-x-1/2 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-800 dark:bg-slate-900"
+              role="listbox"
+              aria-label={t.switchProfile}
+            >
               <span className="block px-3 py-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
                 {t.switchProfile}
               </span>
@@ -156,9 +168,9 @@ export const Header: React.FC<HeaderProps> = ({
                   </button>
                 ))}
               </div>
-            </div>
-            )}
-          </div>
+            </div>,
+            document.body
+          )}
 
           {/* Right Controls: User Account, Print, Save, Language, Theme */}
           <div className="flex items-center gap-2">
