@@ -86,13 +86,13 @@ export const Header: React.FC<HeaderProps> = ({
       <header className={`no-print sticky top-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
         theme === 'dark' ? 'bg-slate-900/90 border-slate-800 text-white' : 'bg-white/90 border-slate-200 text-slate-900'
       }`}>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
+        <div className="mx-auto grid h-16 max-w-7xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-3 sm:gap-4 sm:px-6 lg:px-8">
           {/* Brand Logo & Title */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={onGoToLanding}>
+          <div className="flex min-w-0 items-center gap-3 cursor-pointer" onClick={onGoToLanding}>
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 text-white flex items-center justify-center shadow-md shadow-indigo-500/20">
               <FileCheck2 className="w-5 h-5" />
             </div>
-            <div>
+            <div className="hidden lg:block">
               <h1 className="font-extrabold text-base tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
                 {t.appName}
                 <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
@@ -106,29 +106,29 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Center: Multi-User Profile Switcher */}
-          <div ref={profileMenuRef} className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div ref={profileMenuRef} className="min-w-0 justify-self-center">
             <button
               type="button"
               onClick={() => setIsProfileMenuOpen((open) => !open)}
               aria-expanded={isProfileMenuOpen}
               aria-haspopup="listbox"
               aria-label={`Profil aktif: ${activeProfile?.name || 'belum dipilih'}. Klik untuk mengganti profil.`}
-              className={`flex h-10 w-10 items-center justify-center gap-2 rounded-xl border px-2 text-left text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 md:w-auto md:min-w-52 md:justify-start md:px-3 ${
+              className={`flex h-10 w-10 max-w-full items-center justify-center gap-2 rounded-xl border px-2 text-left text-xs font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:w-full sm:min-w-0 sm:max-w-64 sm:justify-start sm:px-3 md:min-w-44 ${
                 isProfileMenuOpen
                   ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-950/50'
                   : 'border-slate-200 bg-slate-50 hover:border-indigo-400 dark:border-slate-700 dark:bg-slate-800/80'
               }`}
             >
               <Briefcase className="w-4 h-4 text-indigo-500" />
-              <span className="hidden min-w-0 flex-1 md:block">
+              <span className="hidden min-w-0 flex-1 sm:block">
                 <span className="block text-[10px] font-medium text-slate-500 dark:text-slate-400">
                   Profil aktif
                 </span>
-                <span className="block max-w-[220px] truncate text-slate-800 dark:text-slate-200">
+                <span className="block truncate text-slate-800 dark:text-slate-200">
                   {activeProfile?.name || 'Pilih profil'}
                 </span>
               </span>
-              <ChevronDown className={`hidden w-4 h-4 shrink-0 text-slate-500 transition-transform md:block ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`hidden w-4 h-4 shrink-0 text-slate-500 transition-transform sm:block ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
             </button>
           </div>
 
@@ -173,7 +173,7 @@ export const Header: React.FC<HeaderProps> = ({
           )}
 
           {/* Right Controls: User Account, Print, Save, Language, Theme */}
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 items-center justify-end gap-1.5 sm:gap-2">
             {/* User Account / Google Login Button */}
             {isAuthenticated && user ? (
               <div className="relative group">
@@ -192,7 +192,7 @@ export const Header: React.FC<HeaderProps> = ({
                       {user.name.charAt(0)}
                     </div>
                   )}
-                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden md:inline max-w-[100px] truncate">
+                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 hidden xl:inline max-w-[100px] truncate">
                     {user.name}
                   </span>
                   <ChevronDown className="w-3 h-3 text-slate-400" />
@@ -252,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={() => setIsSupportMeOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/60 dark:to-pink-950/60 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-800/80 hover:border-rose-400 text-xs font-extrabold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xs hover:shadow-rose-500/15"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-950/60 dark:to-pink-950/60 text-rose-600 dark:text-rose-400 border border-rose-200/80 dark:border-rose-800/80 hover:border-rose-400 text-xs font-extrabold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-2xs hover:shadow-rose-500/15"
               title="Dukung Pengembang Tagih Dong"
             >
               <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
