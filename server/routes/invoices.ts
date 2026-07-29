@@ -1,7 +1,8 @@
 import { Router } from 'express';
+import { randomUUID } from 'node:crypto';
 import { query } from '../db.js';
 import { authenticateToken } from './authSecure.js';
-import { isFiniteNumber, isRecord, isSafeId, isText } from '../validation.js';
+import { isFiniteNumber, isRecord, isSafeId, isText, isUuid } from '../validation.js';
 
 const router = Router();
 
@@ -174,7 +175,7 @@ router.post('/', async (req: any, res) => {
             id, invoice_id, name, description, quantity, unit_price, unit, tax_rate, discount, discount_type
           ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
           [
-            it.id,
+            isUuid(it.id) ? it.id : randomUUID(),
             inv.id,
             it.name,
             it.description || '',
