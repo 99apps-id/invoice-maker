@@ -2,7 +2,7 @@
 
 # 🧾 Tagih Dong
 
-### Pembuat Invoice & Faktur Bisnis Profesional — 100% Gratis
+### Pembuat Invoice Bisnis Profesional — 100% Gratis
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -10,7 +10,7 @@
 [![Vite](https://img.shields.io/badge/Vite-8.1-646CFF?logo=vite&logoColor=white)](https://vite.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-**Tagih Dong** adalah aplikasi web pembuat invoice (faktur bisnis) profesional yang dirancang khusus untuk **UMKM**, **toko retail**, dan **freelancer** di Indonesia. Dibuat dengan fokus pada **kecepatan**, **hemat tinta printer**, dan **kemudahan penggunaan**.
+**Tagih Dong** adalah aplikasi web pembuat invoice bisnis profesional yang dirancang khusus untuk **UMKM**, **toko retail**, dan **freelancer** di Indonesia. Dibuat dengan fokus pada **kecepatan**, **hemat tinta printer**, dan **kemudahan penggunaan**.
 
 [Lihat Demo](#demo) · [Mulai Menggunakan](#mulai-cepat) · [Fitur Lengkap](#fitur-utama) · [Dokumentasi Lengkap](#-dokumentasi-lengkap) · [Kontribusi](#kontribusi)
 
@@ -35,7 +35,7 @@ Untuk dokumentasi yang lebih mendalam, silakan lihat berkas panduan spesifik ber
 
 | Landing Page (Light) | Workspace Editor (Light) | Admin Dashboard |
 |:---:|:---:|:---:|
-| Landing page responsif dengan demo interaktif | Editor faktur real-time dengan live preview A4 | Dashboard admin untuk manajemen user & invoice |
+| Landing page responsif dengan demo interaktif | Editor invoice real-time dengan live preview A4 | Dashboard admin untuk manajemen user & invoice |
 
 ---
 
@@ -44,10 +44,10 @@ Untuk dokumentasi yang lebih mendalam, silakan lihat berkas panduan spesifik ber
 ### 🧾 Pembuatan Invoice
 - **Editor visual real-time** dengan pratinjau langsung (*live preview*) format A4
 - **23+ template profesional** termasuk Modern, Corporate, Swiss Grid, Luxury Gold Leaf, dll.
-- **Nomor faktur otomatis** dengan format kustom (INV/YYYY/MM/NNN)
+- **Nomor invoice otomatis** dengan format kustom (INV/YYYY/MM/NNN)
 - **Multi-mata uang**: IDR, USD, EUR, SGD, GBP, AUD, JPY
 - **Kalkulasi otomatis**: Subtotal, PPN/Pajak, diskon (persen & nominal), biaya kirim
-- **Status faktur**: Draft, Menunggu Pembayaran, Lunas, Jatuh Tempo
+- **Status invoice**: Draft, Menunggu Pembayaran, Lunas, Jatuh Tempo
 - **Ekspor PDF** presisi A4 tanpa watermark — siap cetak langsung
 
 ### 🖨️ Engine Kertas Ramah Tinta (Ink-Saver)
@@ -55,7 +55,7 @@ Untuk dokumentasi yang lebih mendalam, silakan lihat berkas panduan spesifik ber
 - Optimasi khusus untuk pencetakan dokumen fisik di UMKM & toko retail
 
 ### 📱 Pembayaran QRIS Instan
-- Sisipkan **barcode QRIS statis** bisnis Anda langsung ke dalam faktur
+- Sisipkan **barcode QRIS statis** bisnis Anda langsung ke dalam invoice
 - Klien cukup scan dari GoPay, BCA Mobile, OVO, ShopeePay, atau e-Wallet lainnya
 - Auto-cropper untuk menyesuaikan proporsi gambar QRIS yang diunggah
 
@@ -72,13 +72,13 @@ Untuk dokumentasi yang lebih mendalam, silakan lihat berkas panduan spesifik ber
 ### 📊 Manajemen Bisnis
 - **CRM Klien**: Simpan dan kelola data pelanggan tetap
 - **Katalog Produk/Jasa**: Database item yang bisa di-reuse ke invoice baru
-- **Histori Faktur**: Riwayat lengkap semua invoice yang pernah dibuat
+- **Riwayat Invoice**: Riwayat lengkap semua invoice yang pernah dibuat
 - **Duplikasi Invoice**: Salin invoice lama untuk penagihan berulang
 
 ### 🛡️ Admin Dashboard (Super Admin)
-- **Ringkasan metrik**: Total user, total faktur, omzet tagihan, profil aktif
+- **Ringkasan metrik**: Total user, total invoice, omzet tagihan, profil aktif
 - **Manajemen User (CRUD)**: Tambah, edit, suspend, dan hapus pengguna
-- **Manajemen Invoice**: Lihat, cari, filter, dan ekspor CSV seluruh faktur
+- **Manajemen Invoice**: Lihat, cari, filter, dan ekspor CSV seluruh invoice
 - **Pengaturan sistem**: Maintenance mode, Auto QRIS Engine, Ink-Saver default
 - **Akses terbatas** hanya untuk email admin yang terdaftar
 
@@ -157,7 +157,7 @@ tagih-dong/
 │   │   ├── Catalog/            # Katalog produk/jasa (ItemCatalogManager)
 │   │   ├── Clients/            # CRM klien (ClientManager)
 │   │   ├── Dashboard/          # Histori invoice (InvoiceList)
-│   │   ├── InvoiceEditor/      # Form editor faktur (InvoiceForm)
+│   │   ├── InvoiceEditor/      # Form editor invoice (InvoiceForm)
 │   │   ├── InvoicePreview/     # Live preview & cetak (InvoicePaper, SignatureCanvas)
 │   │   ├── Profiles/           # Profil multi-usaha (ProfileManager)
 │   │   ├── SaaS/               # Landing page, Admin dashboard, Pricing, Support
@@ -218,7 +218,7 @@ Halaman Admin Dashboard hanya dapat diakses oleh pengguna dengan email berikut:
 Admin memiliki akses ke:
 - **Ringkasan Metrik** — KPI overview seluruh platform
 - **Manajemen User** — CRUD pengguna (tambah, edit, suspend, hapus)
-- **Manajemen Invoice** — Lihat, filter, dan ekspor CSV seluruh faktur dari semua user
+- **Manajemen Invoice** — Lihat, filter, dan ekspor CSV seluruh invoice dari semua user
 - **Pengaturan Sistem** — Maintenance mode, auto QRIS engine, ink-saver default
 
 ---

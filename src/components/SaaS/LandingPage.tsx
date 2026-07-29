@@ -111,7 +111,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       heroHeadlineHighlight: 'Paling Cepat & Ramah Tinta',
       heroHeadlineSuffix: 'untuk Usaha Anda.',
       subTitle:
-        'Dibuat khusus untuk UMKM, toko retail, & freelancer. Kirim faktur profesional dalam 10 detik, terima pembayaran QRIS instan, dan cetak PDF hemat tinta printer.',
+        'Dibuat khusus untuk UMKM, toko retail, & freelancer. Kirim invoice profesional dalam 10 detik, terima pembayaran QRIS instan, dan cetak PDF hemat tinta printer.',
       btnTryFree: 'Buat Invoice',
       btnWorkspace: 'Login/Daftar',
       badge1: '100% Free Forever',
@@ -121,15 +121,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       bentoTitle: 'Didesain Khusus Agar Anda Terbayar Lebih Cepat',
       bentoSubtitle: 'Semua kemudahan penagihan yang dibutuhkan usaha Anda ada di sini.',
       bento1Title: 'Engine Kertas Ramah Tinta (Ink-Saver)',
-      bento1Desc: 'Desain faktur bersih berbasis kertas A4 presisi tanpa latar warna gelap yang memboroskan toner printer hingga 70%.',
+      bento1Desc: 'Desain invoice bersih berbasis kertas A4 presisi tanpa latar warna gelap yang memboroskan toner printer hingga 70%.',
       bento2Title: 'Kode QRIS & Transfer Bank Instan',
       bento2Desc: 'Sediakan barcode QRIS statis bisnis Anda agar klien dapat langsung melakukan pembayaran dari m-Banking atau e-Wallet favorit.',
       bento3Title: 'Kelola Banyak Profil Usaha Dalam 1 Akun',
-      bento3Desc: 'Mempunyai lebih dari satu toko atau usaha? Alihkan identitas faktur hanya dengan 1-klik tanpa perlu buat akun baru.',
+      bento3Desc: 'Mempunyai lebih dari satu toko atau usaha? Alihkan identitas invoice hanya dengan 1-klik tanpa perlu buat akun baru.',
       bento4Title: '100% Privasi & Ekspor PDF Presisi',
       bento4Desc: 'Data bisnis Anda tersimpan aman. Hasil ekspor PDF tampil tajam dan bebas dari watermark iklan apapun.',
       calcTitle: 'Hitung Penghematan Usaha Anda',
-      calcSub: 'Geser jumlah faktur yang Anda terbitkan per bulan untuk melihat estimasi penghematan tinta & waktu.',
+      calcSub: 'Geser jumlah invoice yang Anda terbitkan per bulan untuk melihat estimasi penghematan tinta & waktu.',
       calcLabel: 'Jumlah Invoice per Bulan:',
       calcRes1: 'Estimasi Hemat Tinta / Tahun',
       calcRes2: 'Estimasi Waktu Dihemat / Tahun',
@@ -215,7 +215,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 </span>
               </span>
               <p className={`text-[11px] font-medium hidden sm:block ${isDark ? 'text-slate-300' : 'text-slate-500'}`}>
-                Pembuat Invoice & Faktur Bisnis Profesional
+                Pembuat Invoice Bisnis Profesional
               </p>
             </div>
           </div>
@@ -296,7 +296,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-extrabold">
               <ShieldCheck className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
-              <span>Aplikasi Faktur Bisnis Tanpa Biaya Berlangganan</span>
+              <span>Aplikasi Invoice Bisnis Tanpa Biaya Berlangganan</span>
             </div>
 
             <h1
@@ -739,7 +739,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </h3>
               <p className={`text-xs leading-relaxed pl-6 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                 {lang === 'id'
-                  ? 'Ya! Seluruh fitur pembuatan faktur, tema ramah tinta, ekspor PDF, tanda tangan digital, dan QRIS dapat Anda gunakan 100% gratis tanpa biaya berlangganan tersembunyi.'
+                  ? 'Ya! Seluruh fitur pembuatan invoice, tema ramah tinta, ekspor PDF, tanda tangan digital, dan QRIS dapat Anda gunakan 100% gratis tanpa biaya berlangganan tersembunyi.'
                   : 'Yes! All features including invoice creation, ink-friendly themes, PDF exports, digital signatures, and QRIS payments are 100% free with no hidden fees.'}
               </p>
             </div>
@@ -767,7 +767,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </h3>
               <p className={`text-xs leading-relaxed pl-6 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                 {lang === 'id'
-                  ? 'Cukup masuk ke form invoice, lalu unggah gambar QRIS atau masukkan URL QRIS bisnis Anda. Sistem kami secara otomatis memotong dan menampilkan kode QRIS resmi di kertas faktur.'
+                  ? 'Cukup masuk ke form invoice, lalu unggah gambar QRIS atau masukkan URL QRIS bisnis Anda. Sistem kami secara otomatis memotong dan menampilkan kode QRIS resmi di lembar invoice.'
                   : 'Simply open the invoice form and upload your business QRIS image or enter its URL. Our built-in cropper automatically renders the official barcode on your invoice.'}
               </p>
             </div>

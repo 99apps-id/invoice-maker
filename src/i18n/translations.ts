@@ -15,8 +15,8 @@ export const translations = {
     light: 'Terang',
 
     // Navigation
-    navEditor: 'Buat Faktur',
-    navHistory: 'Riwayat Faktur',
+    navEditor: 'Buat Invoice',
+    navHistory: 'Riwayat Invoice',
     navClients: 'Daftar Klien',
     navCatalog: 'Katalog Produk/Jasa',
     navProfiles: 'Profil Usaha',
@@ -26,7 +26,7 @@ export const translations = {
     invoiceTitle: 'INVOICE',
     invoiceDataTab: 'Data Invoice',
     invoiceDataHeader: 'DATA INVOICE',
-    invoiceNumber: 'Nomor Faktur',
+    invoiceNumber: 'Nomor Invoice',
     poNumber: 'Nomor PO / Order',
     issueDate: 'Tanggal Terbit',
     dueDate: 'Jatuh Tempo',
@@ -81,7 +81,7 @@ export const translations = {
 
     // Template & Styling
     templateSettings: 'Desain & Template',
-    chooseTemplate: 'Pilih Template Faktur',
+    chooseTemplate: 'Pilih Template Invoice',
     accentColor: 'Warna Aksen Utama',
     typography: 'Pilihan Font',
     layoutDensity: 'Kepadatan Tata Letak',
@@ -96,11 +96,11 @@ export const translations = {
     clearSignature: 'Hapus Tanda Tangan',
 
     // Actions
-    saveInvoice: 'Simpan Faktur',
-    updateInvoice: 'Perbarui Faktur',
+    saveInvoice: 'Simpan Invoice',
+    updateInvoice: 'Perbarui Invoice',
     exportPdf: 'Cetak / Unduh PDF',
     downloadJson: 'Unduh JSON',
-    duplicate: 'Duplikat Faktur',
+    duplicate: 'Duplikat Invoice',
     markPaid: 'Tandai Lunas',
     delete: 'Hapus',
     cancel: 'Batal',
@@ -130,15 +130,15 @@ export const translations = {
 
     // Profiles Manager
     profilesTitle: 'Kelola Profil Bisnis (Multi-User)',
-    profileDescription: 'Buat dan kelola beberapa identitas bisnis atau usaha untuk menerbitkan faktur berbeda.',
+    profileDescription: 'Buat dan kelola beberapa identitas bisnis atau usaha untuk menerbitkan invoice berbeda.',
     activeBadge: 'Profil Utama Active',
     makeDefault: 'Jadikan Utama',
 
     // Stats Dashboard
-    totalInvoices: 'Total Faktur',
+    totalInvoices: 'Total Invoice',
     totalRevenue: 'Total Pendapatan',
     pendingAmount: 'Tagihan Pending',
-    paidCount: 'Faktur Lunas',
+    paidCount: 'Invoice Lunas',
 
     // Templates names
     tplModern: 'Modern Minimalis',
@@ -160,17 +160,17 @@ export const translations = {
     tplDuotoneSplit: 'Format Blok Dwi-Warna (Kontras)',
     tplTerminalConsole: 'Format Konsol Terminal CLI (Hacker)',
     tplMinimalTable: 'Format Tabel Ultra Minimalis',
-    tplCertifiedTax: 'Format Faktur Resmi / Audit',
+    tplCertifiedTax: 'Format Invoice Resmi / Audit',
     tplCardGridTiles: 'Format Ubin Kartu Grid (Modul)',
     tplAsymmetric: 'Format Asimetris Offset Kreatif',
     tplCompactSlip: 'Format Slip Order Ringkas',
     tplLuxuryGold: 'Format Monogram Emas Premium',
 
     // Confirmations & Toast
-    savedSuccess: 'Faktur berhasil disimpan!',
+    savedSuccess: 'Invoice berhasil disimpan!',
     copiedSuccess: 'Berhasil disalin!',
     confirmDelete: 'Apakah Anda yakin ingin menghapus data ini?',
-    congratsPaid: 'Selamat! Faktur telah ditandai Lunas 🎉',
+    congratsPaid: 'Selamat! Invoice telah ditandai Lunas 🎉',
 
     // Additional paper & form keys
     authorizedSignature: 'Hormat Kami',

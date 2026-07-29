@@ -73,7 +73,7 @@ export const ItemCatalogManager: React.FC<ItemCatalogManagerProps> = ({
             {t.catalogTitle}
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Simpan daftar produk dan tarif jasa standar untuk dimasukkan cepat ke faktur.
+            Simpan daftar produk dan tarif jasa standar untuk dimasukkan cepat ke invoice.
           </p>
         </div>
 

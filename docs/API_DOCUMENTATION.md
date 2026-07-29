@@ -120,9 +120,9 @@ Memperbarui nama dan foto profil pengguna.
 
 ---
 
-## 🧾 Endpoint Faktur & Invoice (`/api/invoices`)
+## 🧾 Endpoint Invoice (`/api/invoices`)
 
-Semua endpoint faktur membutuhkan token JWT.
+Semua endpoint invoice membutuhkan token JWT.
 
 ### `GET /api/invoices`
 Mengambil semua daftar invoice milik pengguna terautentikasi (diurutkan dari yang terbaru).

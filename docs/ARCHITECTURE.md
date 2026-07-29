@@ -1,6 +1,6 @@
 # 🏗️ Arsitektur Sistem Tagih Dong (Invoice Maker)
 
-Selamat datang di dokumentasi arsitektur **Tagih Dong**, platform pembuat faktur dan invoice bisnis profesional berbasis web yang dirancang khusus untuk UMKM, toko retail, dan freelancer di Indonesia.
+Selamat datang di dokumentasi arsitektur **Tagih Dong**, platform pembuat invoice bisnis profesional berbasis web yang dirancang khusus untuk UMKM, toko retail, dan freelancer di Indonesia.
 
 ---
 
@@ -55,7 +55,7 @@ graph TD
 | **Backend Server** | Node.js + Express.js | Server REST API (di folder `server/`) |
 | **Database** | PostgreSQL 15+ | DBMS relasional untuk persistensi data server-side |
 | **Autentikasi** | Google OAuth 2.0 + JWT | Login Google terverifikasi dengan token JWT 7 hari |
-| **Transaksional Email** | Nodemailer | Pengiriman email welcome & notifikasi faktur |
+| **Transaksional Email** | Nodemailer | Pengiriman email welcome & notifikasi invoice |
 | **Linter & Quality** | OXLint | Linter berkecepatan tinggi untuk standar kualitas kode |
 
 ---
@@ -75,7 +75,7 @@ src/
 │   │   └── ItemCatalogManager.tsx
 │   ├── Clients/                # CRM & Database Klien
 │   │   └── ClientManager.tsx
-│   ├── Dashboard/              # Histori & Filter Faktur
+│   ├── Dashboard/              # Riwayat & Filter Invoice
 │   │   └── InvoiceList.tsx
 │   ├── InvoiceEditor/          # Form Input & Kalkulasi Invoice
 │   │   ├── InvoiceForm.tsx
@@ -117,7 +117,7 @@ src/
 Tagih Dong mendukung dua skenario penggunaan:
 
 ### 1. Offline / Standalone Mode (Default)
-- Semua data faktur, profil bisnis, klien, dan katalog disimpan di `localStorage`.
+- Semua data invoice, profil bisnis, klien, dan katalog disimpan di `localStorage`.
 - Pembacaan dan penulisan dilakukan secara instan melalui modul [storage.ts](file:///c:/Project/invoice-maker/src/utils/storage.ts).
 - Tidak memerlukan koneksi internet maupun registrasi akun.
 
@@ -148,7 +148,7 @@ sequenceDiagram
         Backend-->>Auth: Sukses Sinkronisasi Server
     end
     
-    Editor-->>Pengguna: Faktur Tersimpan & Siap Dicetak/Ekspor PDF
+    Editor-->>Pengguna: Invoice Tersimpan & Siap Dicetak/Ekspor PDF
 ```
 
 ---
@@ -168,13 +168,13 @@ Salah satu inovasi utama Tagih Dong adalah optimasi cetak ramah tinta untuk UMKM
 Aplikasi memiliki dua tingkatan otorisasi utama:
 
 1. **User Regular**:
-   - Berhak membuat, mengedit, dan mengelola faktur, profil bisnis, klien, dan katalog milik mereka sendiri.
+   - Berhak membuat, mengedit, dan mengelola invoice, profil bisnis, klien, dan katalog milik mereka sendiri.
    - Hanya memiliki akses ke data dengan `user_id` milik sendiri.
 
 2. **Super Admin**:
    - Dikhususkan untuk email terdaftar (misal: `99apps.id@gmail.com`, `support@99apps.id`).
    - Dapat mengakses **Admin Dashboard** (`/admin`).
-   - Memiliki hak akses ringkasan metrik platform, manajemen pengguna (CRUD/Suspend), manajemen faktur global, dan pengaturan sistem (Maintenance Mode, Auto QRIS).
+   - Memiliki hak akses ringkasan metrik platform dan data pengguna.
 
 ---
 
@@ -182,4 +182,4 @@ Aplikasi memiliki dua tingkatan otorisasi utama:
 
 Aplikasi mendukung pengubahan bahasa secara dinamis (*real-time switch*) antara Bahasa Indonesia 🇮🇩 dan Bahasa Inggris 🇬🇧:
 - Dikelola oleh modul [translations.ts](file:///c:/Project/invoice-maker/src/i18n/translations.ts).
-- Pilihan bahasa tersimpan di `localStorage` dan langsung mengubah seluruh label UI, nama status faktur, dan istilah pajak secara otomatis.
+- Pilihan bahasa tersimpan di `localStorage` dan langsung mengubah seluruh label UI, nama status invoice, dan istilah pajak secara otomatis.

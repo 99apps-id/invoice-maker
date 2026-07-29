@@ -11,11 +11,11 @@ erDiagram
     users ||--o{ user_profiles : "memiliki banyak profil bisnis"
     users ||--o{ clients : "mengelola banyak klien"
     users ||--o{ catalog_items : "membuat banyak item katalog"
-    users ||--o{ invoices : "menerbitkan banyak faktur"
+    users ||--o{ invoices : "menerbitkan banyak invoice"
     
     user_profiles ||--o{ clients : "terkait profil bisnis (opsional)"
     user_profiles ||--o{ catalog_items : "terkait profil bisnis (opsional)"
-    user_profiles ||--o{ invoices : "menerbitkan faktur (opsional)"
+    user_profiles ||--o{ invoices : "menerbitkan invoice (opsional)"
     
     invoices ||--|{ invoice_items : "berisi 1 atau lebih baris item"
 
@@ -187,7 +187,7 @@ Katalog barang & jasa reusable.
 ---
 
 ### 5. Tabel `invoices` & `invoice_items`
-Tabel utama dokumen faktur dan rincian itemnya.
+Tabel utama dokumen invoice dan rincian itemnya.
 
 #### Tabel `invoices`
 - `id` (`UUID` PK)
@@ -199,7 +199,7 @@ Tabel utama dokumen faktur dan rincian itemnya.
 - `status` (`VARCHAR(50)`): `draft`, `pending`, `paid`, `overdue`
 - `language` (`VARCHAR(10)`): `id` / `en`
 - `currency` (`VARCHAR(10)`): `IDR`, `USD`, `EUR`, `SGD`, `GBP`, `AUD`, `JPY`
-- `issuer_data` & `client_data` (`JSONB` NOT NULL): Snapshot data penerbit & penerima faktur
+- `issuer_data` & `client_data` (`JSONB` NOT NULL): Snapshot data penerbit & penerima invoice
 - `shipping_fee` (`NUMERIC(15,2)`): Biaya pengiriman
 - `theme_config` (`JSONB` NOT NULL): Snapshot warna, font, dan ID template (misal: `modern`, `corporate`, `luxury`)
 

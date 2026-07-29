@@ -1,6 +1,6 @@
 # 📖 Panduan Pengguna Tagih Dong (Invoice Maker)
 
-Selamat datang di **Panduan Pengguna Tagih Dong**. Dokumen ini berisi petunjuk penggunaan langkah demi langkah aplikasi pembuat faktur dan invoice bisnis profesional.
+Selamat datang di **Panduan Pengguna Tagih Dong**. Dokumen ini berisi petunjuk penggunaan langkah demi langkah aplikasi pembuat invoice bisnis profesional.
 
 ---
 
@@ -31,7 +31,7 @@ flowchart LR
 ## 🧾 Panduan Fitur Utama
 
 ### 🎨 1. Pembuatan Invoice & 23+ Template
-- **Format Nomor Faktur Otomatis**: Aplikasi secara otomatis menyusun format nomor seperti `INV/2026/07/001`. Anda dapat mengubah format awalan (*prefix*) di pengaturan profil.
+- **Format Nomor Invoice Otomatis**: Aplikasi secara otomatis menyusun format nomor seperti `INV/2026/07/001`. Anda dapat mengubah format awalan (*prefix*) di pengaturan profil.
 - **Dukungan Multi-Mata Uang**: Pilih mata uang transaksi:
   - 🇮🇩 **IDR** (Rupiah Indonesia)
   - 🇺🇸 **USD** (US Dollar)
@@ -54,12 +54,12 @@ flowchart LR
 ### 📱 3. Pembayaran QRIS Instan
 1. Pada form editor, scroll ke bagian **Pengaturan Pembayaran & QRIS**.
 2. Unggah foto / gambar barcode **QRIS Statis** milik bisnis Anda (BCA Mobile, GoPay, OVO, ShopeePay, DANA, Livin', dll.).
-3. Barcode QRIS akan otomatis ditampilkan di pojok bawah faktur. Klien cukup memindai (*scan*) barcode langsung dari ponsel mereka untuk membayar tagihan.
+3. Barcode QRIS akan otomatis ditampilkan di pojok bawah invoice. Klien cukup memindai (*scan*) barcode langsung dari ponsel mereka untuk membayar tagihan.
 
 ---
 
 ### ✍️ 4. Tanda Tangan Digital
-Tagih Dong menyediakan dua cara untuk menambahkan tanda tangan pada faktur:
+Tagih Dong menyediakan dua cara untuk menambahkan tanda tangan pada invoice:
 - **Canvas Tanda Tangan**: Gambar tanda tangan langsung menggunakan mouse atau layar sentuh ponsel/tablet.
 - **Upload File Gambar**: Unggah file PNG/JPG tanda tangan yang sudah transparan.
 
@@ -69,7 +69,7 @@ Tagih Dong menyediakan dua cara untuk menambahkan tanda tangan pada faktur:
 Jika Anda memiliki lebih dari satu lini bisnis (misalnya: *Studio Desain* dan *Toko Sepatu*):
 1. Klik nama profil di header atas.
 2. Pilih **"Kelola Profil Usaha"** -> **"Tambah Profil Baru"**.
-3. Setiap profil memiliki logo, data bank, QRIS, serta daftar faktur tersendiri. Anda dapat berpindah antar profil cukup dengan **1-klik**.
+3. Setiap profil memiliki logo, data bank, QRIS, serta daftar invoice tersendiri. Anda dapat berpindah antar profil cukup dengan **1-klik**.
 
 ---
 
@@ -82,9 +82,9 @@ Jika Anda memiliki lebih dari satu lini bisnis (misalnya: *Studio Desain* dan *T
 ### 🛡️ 7. Admin Dashboard (Super Admin)
 Bagi pengguna berstatus **Super Admin** (email terdaftar seperti `99apps.id@gmail.com`):
 - Akses menu **Admin Dashboard** melalui header.
-- **Metrik Utama**: Ringkasan total pengguna terdaftar, total faktur diterbitkan, akumulasi nilai transaksi tagihan, dan profil aktif.
+- **Metrik Utama**: Ringkasan total pengguna terdaftar, total invoice diterbitkan, akumulasi nilai transaksi tagihan, dan profil aktif.
 - **Manajemen User**: Lihat daftar pengguna, ubah role pengguna, atau lakukan penangguhan (*suspend*).
-- **Manajemen Invoice Global**: Cari, filter berdasarkan status/tanggal, dan ekspor data seluruh faktur ke file CSV.
+- **Manajemen Invoice Global**: Cari, filter berdasarkan status/tanggal, dan ekspor data seluruh invoice ke file CSV.
 - **Pengaturan Sistem**: Aktifkan *Maintenance Mode*, setel default *Ink-Saver Engine*, dan ubah pesan pengumuman platform.
 
 ---
@@ -92,7 +92,7 @@ Bagi pengguna berstatus **Super Admin** (email terdaftar seperti `99apps.id@gmai
 ## ❓ Pertanyaan Umum (FAQ)
 
 #### Q: Apakah Tagih Dong benar-benar 100% Gratis?
-> **Ya!** Seluruh fitur pembuatan faktur, ekspor PDF A4 tanpa watermark, barcode QRIS, dan template profesional dapat digunakan 100% gratis tanpa biaya tersembunyi.
+> **Ya!** Seluruh fitur pembuatan invoice, ekspor PDF A4 tanpa watermark, barcode QRIS, dan template profesional dapat digunakan 100% gratis tanpa biaya tersembunyi.
 
 #### Q: Di mana data invoice saya disimpan?
 > Jika Anda menggunakan aplikasi tanpa login, data disimpan dengan aman di penyimpanan lokal browser Anda (`localStorage`). Jika Anda masuk dengan **Google OAuth**, data Anda akan disinkronkan secara aman ke basis data cloud sehingga bisa diakses dari perangkat lain.

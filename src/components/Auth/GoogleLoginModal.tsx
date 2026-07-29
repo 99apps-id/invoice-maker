@@ -102,7 +102,7 @@ export const GoogleLoginModal: React.FC<GoogleLoginModalProps> = ({
             Masuk dengan Google
           </h4>
           <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-            Simpan & kelola faktur, katalog produk/jasa, dan klien bisnis Anda dengan aman di database terisolasi.
+            Simpan & kelola invoice, katalog produk/jasa, dan klien bisnis Anda dengan aman di database terisolasi.
           </p>
         </div>
 

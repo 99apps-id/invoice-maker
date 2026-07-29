@@ -12,10 +12,10 @@ dan proyek ini mengikuti [Semantic Versioning](https://semver.org/lang/id/).
 #### Fitur Inti
 - **Editor Invoice real-time** dengan live preview format A4
 - **23+ template profesional**: Modern, Editorial, Corporate, Swiss Grid, Luxury Gold Leaf, Risograph, Minimal Mono, dll.
-- **Nomor faktur otomatis** dengan format INV/YYYY/MM/NNN
+- **Nomor invoice otomatis** dengan format INV/YYYY/MM/NNN
 - **Multi-mata uang**: IDR, USD, EUR, SGD, GBP, AUD, JPY
 - **Kalkulasi otomatis**: Subtotal, PPN/Pajak (konfigurasi %), diskon (persen & nominal), biaya kirim
-- **Status faktur**: Draft, Menunggu Pembayaran, Lunas, Jatuh Tempo
+- **Status invoice**: Draft, Menunggu Pembayaran, Lunas, Jatuh Tempo
 - **Ekspor PDF** presisi A4 tanpa watermark — siap cetak langsung
 
 #### Engine Ink-Saver
@@ -23,7 +23,7 @@ dan proyek ini mengikuti [Semantic Versioning](https://semver.org/lang/id/).
 - Perbandingan visual biaya tinta di landing page
 
 #### Pembayaran QRIS
-- Sisipkan barcode QRIS statis langsung ke dalam faktur
+- Sisipkan barcode QRIS statis langsung ke dalam invoice
 - Auto-cropper untuk menyesuaikan proporsi gambar QRIS
 
 #### Multi-Profil Usaha
@@ -39,7 +39,7 @@ dan proyek ini mengikuti [Semantic Versioning](https://semver.org/lang/id/).
 #### Manajemen Bisnis
 - **CRM Klien**: Simpan dan kelola data pelanggan tetap
 - **Katalog Produk/Jasa**: Database item reusable
-- **Histori Faktur**: Riwayat lengkap semua invoice
+- **Riwayat Invoice**: Riwayat lengkap semua invoice
 - **Duplikasi Invoice**: Salin invoice lama untuk penagihan berulang
 
 #### Admin Dashboard

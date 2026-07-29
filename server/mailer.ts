@@ -55,7 +55,7 @@ export async function sendWelcomeEmail(toEmail: string, userName: string) {
             📄
           </div>
           <h1 style="color: #0f172a; font-size: 22px; font-weight: 800; margin-top: 12px; margin-bottom: 4px;">Tagih Dong</h1>
-          <p style="color: #64748b; font-size: 13px; margin: 0;">Pembuat Invoice & Faktur Bisnis Profesional</p>
+          <p style="color: #64748b; font-size: 13px; margin: 0;">Pembuat Invoice Bisnis Profesional</p>
         </div>
 
         <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 20px 0;" />
@@ -67,7 +67,7 @@ export async function sendWelcomeEmail(toEmail: string, userName: string) {
           <div style="background-color: #f8fafc; border-left: 4px solid #6366f1; padding: 16px; border-radius: 8px; margin: 20px 0;">
             <p style="margin: 0; font-weight: bold; color: #1e1b4b; font-size: 13px;">✨ Fitur yang Siap Anda Gunakan:</p>
             <ul style="margin: 8px 0 0 0; padding-left: 20px; color: #475569; font-size: 13px;">
-              <li>Menerbitkan faktur profesional dengan 24 template kertas putih ramah tinta.</li>
+              <li>Menerbitkan invoice profesional dengan 24 template kertas putih ramah tinta.</li>
               <li>Menyimpan katalog produk/barang & layanan jasa.</li>
               <li>Manajemen data klien & multi-profil usaha.</li>
               <li>Metode pembayaran QRIS Statis opsional dengan fasilitas crop interaktif.</li>

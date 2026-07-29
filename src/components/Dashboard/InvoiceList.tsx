@@ -118,7 +118,7 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
           <div>
             <span className="text-xs font-semibold text-slate-500">{t.paidCount}</span>
             <h4 className="text-lg font-extrabold text-slate-900 dark:text-white">
-              {paidCount} <span className="text-xs font-normal text-slate-400">Faktur</span>
+              {paidCount} <span className="text-xs font-normal text-slate-400">Invoice</span>
             </h4>
           </div>
         </div>
@@ -192,7 +192,7 @@ export const InvoiceList: React.FC<InvoiceListProps> = ({
               {filteredInvoices.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="text-center py-12 text-slate-400">
-                    Tidak ada faktur ditemukan.
+                    Tidak ada invoice ditemukan.
                   </td>
                 </tr>
               ) : (

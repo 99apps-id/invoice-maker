@@ -172,7 +172,7 @@ export const INITIAL_INVOICES: Invoice[] = [
     taxName: 'PPN',
     shippingFee: 0,
     notes: 'Terima kasih atas kerja samanya! Pembayaran dapat ditransfer langsung ke rekening BCA tercantum.',
-    paymentTerms: 'Jatuh tempo pembayaran adalah 30 hari sejak tanggal terbit faktur. Denda 1% per minggu berlaku setelah jatuh tempo.',
+    paymentTerms: 'Jatuh tempo pembayaran adalah 30 hari sejak tanggal terbit invoice. Denda 1% per minggu berlaku setelah jatuh tempo.',
     theme: {
       templateId: 'modern',
       primaryColor: '#4f46e5',
@@ -213,7 +213,7 @@ export const INITIAL_INVOICES: Invoice[] = [
     ],
     taxName: 'PPN',
     shippingFee: 0,
-    notes: 'Faktur ini telah dilunasi penuh. Terima kasih banyak!',
+    notes: 'Invoice ini telah dilunasi penuh. Terima kasih banyak!',
     paymentTerms: 'Lunas',
     theme: {
       templateId: 'editorial',

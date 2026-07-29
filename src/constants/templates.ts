@@ -251,7 +251,7 @@ export const TEMPLATES: TemplateDefinition[] = [
     id: 'stamp_certification',
     nameKey: 'tplCertifiedTax',
     description: {
-      id: 'Format Faktur Resmi Ber-Lencana: Dilengkapi kotak verifikasi audit & lencana resmi.',
+      id: 'Format Invoice Resmi Ber-Lencana: Dilengkapi kotak verifikasi audit & lencana resmi.',
       en: 'Certified Official Invoice format: Equipped with audit verification box & official seal.'
     },
     defaultColor: '#b91c1c',

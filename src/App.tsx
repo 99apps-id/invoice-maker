@@ -132,7 +132,7 @@ export function App() {
       taxName: 'PPN',
       shippingFee: 0,
       notes: 'Terima kasih atas kepercayaan Anda! Pembayaran dapat ditransfer ke rekening di atas.',
-      paymentTerms: 'Jatuh tempo pembayaran 30 hari sejak faktur diterbitkan.',
+      paymentTerms: 'Jatuh tempo pembayaran 30 hari sejak invoice diterbitkan.',
       theme: {
         templateId: 'modern',
         primaryColor: '#4f46e5',
@@ -267,7 +267,7 @@ export function App() {
     saveInvoices(updated);
     setCurrentInvoice(duplicated);
     setActiveTab('editor');
-    showToast('Faktur berhasil diduplikat!');
+    showToast('Invoice berhasil diduplikat!');
   };
 
   // Mark invoice as paid
@@ -289,7 +289,7 @@ export function App() {
     const updated = invoices.filter((i) => i.id !== id);
     setInvoices(updated);
     saveInvoices(updated);
-    showToast('Faktur telah dihapus.');
+    showToast('Invoice telah dihapus.');
   };
 
   // Print PDF handler

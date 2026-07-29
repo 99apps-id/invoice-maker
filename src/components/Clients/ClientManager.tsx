@@ -69,7 +69,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
             {t.clientsTitle}
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Kelola kontak klien dan informasi tagihan perusahaan untuk pembuatan faktur cepat.
+            Kelola kontak klien dan informasi tagihan perusahaan untuk pembuatan invoice cepat.
           </p>
         </div>
 
