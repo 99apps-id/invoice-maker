@@ -193,7 +193,22 @@ router.put('/me', authenticateToken, async (req: any, res) => {
 router.get('/admin/users', authenticateToken, requireAdmin, async (_req, res) => {
   try {
     const users = await query(
-      'SELECT id, email, name, picture, role, plan, created_at FROM users ORDER BY created_at DESC'
+      `SELECT
+        u.id,
+        u.email,
+        u.name,
+        u.picture,
+        u.role,
+        u.plan,
+        u.created_at,
+        (SELECT COUNT(*)::int FROM user_profiles p WHERE p.user_id = u.id) AS profiles_count,
+        (SELECT COUNT(*)::int FROM invoices i WHERE i.user_id = u.id) AS invoices_count,
+        (SELECT COALESCE(SUM(ii.quantity * ii.unit_price), 0)::float
+         FROM invoices i
+         JOIN invoice_items ii ON ii.invoice_id = i.id
+         WHERE i.user_id = u.id) AS total_volume
+       FROM users u
+       ORDER BY u.created_at DESC`
     );
     return res.json(users.rows);
   } catch {

@@ -36,7 +36,7 @@ import { CheckCircle2, Eye } from 'lucide-react';
 import { getTranslation } from './i18n/translations';
 
 export function App() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, token, isAuthenticated } = useAuth();
   const isAdmin = isAdminEmail(user?.email) || user?.role === 'admin';
 
   // Application settings
@@ -496,15 +496,8 @@ export function App() {
         {activeTab === 'admin' && (
           isAdmin ? (
             <AdminDashboard
-              invoices={invoices}
-              profiles={profiles}
-              language={language}
+              token={token}
               theme={appTheme}
-              onDeleteInvoice={handleDeleteInvoice}
-              onPreviewInvoice={(inv) => {
-                setCurrentInvoice(inv);
-                setActiveTab('editor');
-              }}
             />
           ) : (
             <div className="p-12 text-center space-y-4">
