@@ -90,12 +90,13 @@
 @media print {
   html, body {
     width: 210mm !important;
-    height: 297mm !important;
+    min-height: 297mm !important;
+    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #ffffff !important;
     color: #000000 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -107,21 +108,22 @@
   .printable-invoice-container {
     width: 210mm !important;
     min-height: 297mm !important;
-    max-height: 297mm !important;
+    height: auto !important;
+    max-height: none !important;
     margin: 0 !important;
     padding: 12mm 15mm !important;
     box-sizing: border-box !important;
     box-shadow: none !important;
     border: none !important;
     background: #ffffff !important;
-    page-break-after: avoid !important;
-    page-break-inside: avoid !important;
-    overflow: hidden !important;
+    page-break-inside: auto !important;
+    overflow: visible !important;
   }
 
   .printable-invoice {
     width: 100% !important;
-    height: 100% !important;
+    min-height: 273mm !important;
+    height: auto !important;
     box-sizing: border-box !important;
     box-shadow: none !important;
     border: none !important;

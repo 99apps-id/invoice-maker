@@ -127,18 +127,6 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
                 </div>
               )}
 
-              {Boolean(invoice.issuer.qrisUrl) && (
-                <div className="space-y-2 pt-2">
-                  <div className="p-1.5 bg-white rounded-xl inline-block border border-slate-200 shadow-2xs">
-                    {invoice.issuer.qrisUrl?.startsWith('data:image/') || invoice.issuer.qrisUrl?.startsWith('http') ? (
-                      <img src={invoice.issuer.qrisUrl} alt="QRIS Payment" className="w-[85px] h-[85px] object-contain rounded-lg" />
-                    ) : (
-                      <QRCodeSVG value={invoice.issuer.qrisUrl!} size={85} />
-                    )}
-                  </div>
-                  <p className="text-[10px] text-slate-500">{t.scanQrisPayment}</p>
-                </div>
-              )}
             </div>
 
             <div className="col-span-8 p-6 bg-white dark:bg-slate-900 space-y-5 flex flex-col justify-between">
@@ -202,12 +190,6 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
                   <p className="font-bold text-sm text-slate-900 dark:text-white whitespace-nowrap">{t.grandTotal}: <span className="font-mono text-base" style={{ color: primaryColor }}>{formatCurrency(totals.grandTotal, invoice.currency, invoice.language)}</span></p>
                 </div>
 
-                {theme.showSignature && (
-                  <div className="text-right text-[11px]">
-                    <p className="text-[10px] text-slate-400 uppercase">{t.authorizedSignature}</p>
-                    <p className="font-bold text-slate-900 dark:text-white mt-4">{invoice.issuer.ownerName || invoice.issuer.name}</p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -632,21 +614,6 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
                     <p className="mt-0.5 leading-snug text-slate-500 dark:text-slate-400 italic">{invoice.paymentTerms}</p>
                   </div>
                 )}
-                {Boolean(invoice.issuer.qrisUrl) && (
-                  <div className="flex items-center gap-3 pt-1">
-                    <div className="p-1.5 bg-white rounded-lg border border-slate-200 shadow-2xs shrink-0">
-                      {invoice.issuer.qrisUrl?.startsWith('data:image/') || invoice.issuer.qrisUrl?.startsWith('http') ? (
-                        <img src={invoice.issuer.qrisUrl} alt="QRIS Payment" className="w-[65px] h-[65px] object-contain rounded-md" />
-                      ) : (
-                        <QRCodeSVG value={invoice.issuer.qrisUrl!} size={65} />
-                      )}
-                    </div>
-                    <div>
-                      <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">{t.scanQrisPayment}</span>
-                      <p className="text-[10px] text-slate-500 leading-tight">Scan via BCA Mobile, GoPay, OVO, ShopeePay, atau m-Banking.</p>
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="col-span-5 flex flex-col justify-between space-y-4">
@@ -679,23 +646,47 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
                   </div>
                 </div>
 
-                {theme.showSignature && (
-                  <div className="text-right pt-1 space-y-0.5">
-                    <p className="text-[10px] text-slate-400 uppercase tracking-wider">Hormat Kami / Authorized Signature</p>
-                    {invoice.issuer.signatureUrl ? (
-                      <img src={invoice.issuer.signatureUrl} alt="Signature" className="h-12 ml-auto object-contain my-0.5" />
-                    ) : (
-                      <div className="h-10 border-b border-slate-300 dark:border-slate-700 w-36 ml-auto flex items-end justify-center">
-                        <span className="text-[9px] text-slate-300 italic mb-0.5">[ Stamp / Sign ]</span>
-                      </div>
-                    )}
-                    <p className="font-bold text-[11px] text-slate-800 dark:text-slate-200">{invoice.issuer.ownerName || invoice.issuer.name}</p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
         )}
+
+        {(theme.showQrPayment && invoice.issuer.qrisUrl) || theme.showSignature ? (
+          <div
+            className={`avoid-break grid gap-4 border-t border-slate-200 bg-white pt-3 text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white ${
+              theme.showQrPayment && invoice.issuer.qrisUrl && theme.showSignature ? 'grid-cols-2' : 'grid-cols-1'
+            } ${isSidebarLayout ? 'mx-6 mb-5 mt-4' : 'mt-1'}`}
+          >
+            {theme.showQrPayment && invoice.issuer.qrisUrl && (
+              <div className="flex items-center gap-3">
+                <div className="shrink-0 rounded-lg border border-slate-200 bg-white p-1.5 shadow-2xs">
+                  {invoice.issuer.qrisUrl.startsWith('data:image/') || invoice.issuer.qrisUrl.startsWith('http') ? (
+                    <img src={invoice.issuer.qrisUrl} alt="QRIS Payment" className="h-16 w-16 rounded-md object-contain" />
+                  ) : (
+                    <QRCodeSVG value={invoice.issuer.qrisUrl} size={64} />
+                  )}
+                </div>
+                <p className="text-[11px] font-bold text-slate-800 dark:text-slate-200">{t.scanQrisPayment}</p>
+              </div>
+            )}
+
+            {theme.showSignature && (
+              <div className="ml-auto min-w-40 text-right">
+                <p className="text-[10px] uppercase tracking-wider text-slate-400">{t.authorizedSignature}</p>
+                {invoice.issuer.signatureUrl ? (
+                  <img src={invoice.issuer.signatureUrl} alt={t.digitalSignature} className="my-0.5 ml-auto h-12 max-w-40 object-contain" />
+                ) : (
+                  <div className="ml-auto flex h-10 w-40 items-end justify-center border-b border-slate-300 dark:border-slate-700">
+                    <span className="mb-1 text-[9px] italic text-slate-400">{t.digitalSignature}</span>
+                  </div>
+                )}
+                <p className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
+                  {invoice.issuer.ownerName || invoice.issuer.name}
+                </p>
+              </div>
+            )}
+          </div>
+        ) : null}
 
       </div>
     </div>
