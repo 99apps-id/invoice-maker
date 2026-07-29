@@ -35,8 +35,6 @@ export type FontFamily = 'inter' | 'jakarta' | 'space' | 'playfair' | 'mono';
 
 export type BusinessType = 'trading' | 'service' | 'repair' | 'retail' | 'general';
 export type CatalogCategory = 'product' | 'service';
-export type UserPlan = 'free' | 'paid';
-
 export interface UserProfile {
   id: string;
   name: string; // Company / Business Name

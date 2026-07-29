@@ -4,7 +4,6 @@ import type { Invoice } from '../../types';
 import { getTranslation } from '../../i18n/translations';
 import { calculateInvoiceTotals, formatCurrency, formatDate } from '../../utils/formatters';
 import { FONT_OPTIONS } from '../../constants/templates';
-import { useAuth } from '../../context/AuthContext';
 
 interface InvoicePaperProps {
   invoice: Invoice;
@@ -12,7 +11,6 @@ interface InvoicePaperProps {
 
 export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
   const t = getTranslation(invoice.language);
-  const { plan } = useAuth();
   const totals = calculateInvoiceTotals(invoice.items, invoice.shippingFee);
   const theme = invoice.theme;
 
@@ -129,7 +127,7 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
                 </div>
               )}
 
-              {plan === 'paid' && Boolean(invoice.issuer.qrisUrl) && (
+              {Boolean(invoice.issuer.qrisUrl) && (
                 <div className="space-y-2 pt-2">
                   <div className="p-1.5 bg-white rounded-xl inline-block border border-slate-200 shadow-2xs">
                     {invoice.issuer.qrisUrl?.startsWith('data:image/') || invoice.issuer.qrisUrl?.startsWith('http') ? (
@@ -634,7 +632,7 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
                     <p className="mt-0.5 leading-snug text-slate-500 dark:text-slate-400 italic">{invoice.paymentTerms}</p>
                   </div>
                 )}
-                {plan === 'paid' && Boolean(invoice.issuer.qrisUrl) && (
+                {Boolean(invoice.issuer.qrisUrl) && (
                   <div className="flex items-center gap-3 pt-1">
                     <div className="p-1.5 bg-white rounded-lg border border-slate-200 shadow-2xs shrink-0">
                       {invoice.issuer.qrisUrl?.startsWith('data:image/') || invoice.issuer.qrisUrl?.startsWith('http') ? (
@@ -699,12 +697,6 @@ export const InvoicePaper: React.FC<InvoicePaperProps> = ({ invoice }) => {
           </div>
         )}
 
-        {/* Footer info line - Watermark ONLY for Free users */}
-        {plan === 'free' && (
-          <div className="text-center text-[9px] text-slate-400 dark:text-slate-600 pt-2 border-t border-slate-100 dark:border-slate-800 mt-2">
-            Generated with Tagih Dong • Professional Invoice System
-          </div>
-        )}
       </div>
     </div>
   );

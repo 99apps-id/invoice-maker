@@ -142,7 +142,6 @@ router.post('/google', async (req, res) => {
         name: user.name,
         picture: user.picture,
         role: user.role,
-        plan: user.plan || 'free',
       },
       profiles: profiles.rows,
     });
@@ -155,7 +154,7 @@ router.post('/google', async (req, res) => {
 router.get('/me', authenticateToken, async (req: any, res) => {
   try {
     const result = await query(
-      'SELECT id, email, name, picture, role, plan FROM users WHERE id = $1',
+      'SELECT id, email, name, picture, role FROM users WHERE id = $1',
       [req.user.userId]
     );
     if (!result.rows.length) return res.status(404).json({ error: 'Pengguna tidak ditemukan' });
@@ -180,7 +179,7 @@ router.put('/me', authenticateToken, async (req: any, res) => {
     const updated = await query(
       `UPDATE users SET
         name = COALESCE($1, name), picture = COALESCE($2, picture), updated_at = NOW()
-       WHERE id = $3 RETURNING id, email, name, picture, role, plan`,
+       WHERE id = $3 RETURNING id, email, name, picture, role`,
       [name, picture, req.user.userId]
     );
     if (!updated.rows.length) return res.status(404).json({ error: 'Pengguna tidak ditemukan' });
@@ -199,7 +198,6 @@ router.get('/admin/users', authenticateToken, requireAdmin, async (_req, res) =>
         u.name,
         u.picture,
         u.role,
-        u.plan,
         u.created_at,
         (SELECT COUNT(*)::int FROM user_profiles p WHERE p.user_id = u.id) AS profiles_count,
         (SELECT COUNT(*)::int FROM invoices i WHERE i.user_id = u.id) AS invoices_count,

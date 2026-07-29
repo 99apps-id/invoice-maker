@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { Check, Palette, Type, LayoutGrid, Lock } from 'lucide-react';
+import React from 'react';
+import { Check, Palette, Type, LayoutGrid } from 'lucide-react';
 import { FONT_OPTIONS, PRESET_COLORS, TEMPLATES } from '../../constants/templates';
 import { getTranslation } from '../../i18n/translations';
 import type { FontFamily, InvoiceThemeConfig, Language, TemplateId } from '../../types';
-import { useAuth } from '../../context/AuthContext';
-import { PricingModal } from '../SaaS/PricingModal';
 
 interface ThemeTemplatePickerProps {
   themeConfig: InvoiceThemeConfig;
@@ -12,35 +10,13 @@ interface ThemeTemplatePickerProps {
   language: Language;
 }
 
-const UNLOCKED_FREE_TEMPLATES: TemplateId[] = [
-  'modern',
-  'editorial',
-  'atmospheric',
-  'corporate',
-  'risograph',
-];
-
-const UNLOCKED_FREE_FONTS: FontFamily[] = ['inter'];
-
 export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
   themeConfig,
   onChange,
   language,
 }) => {
   const t = getTranslation(language);
-  const { plan } = useAuth();
-  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
-  const [lockedFeatureName, setLockedFeatureName] = useState<string | undefined>();
-
   const handleTemplateSelect = (id: TemplateId) => {
-    const isLocked = plan === 'free' && !UNLOCKED_FREE_TEMPLATES.includes(id);
-    if (isLocked) {
-      const selectedTpl = TEMPLATES.find((t) => t.id === id);
-      setLockedFeatureName(`Tema ${selectedTpl?.id || id}`);
-      setIsPricingModalOpen(true);
-      return;
-    }
-
     const selectedTpl = TEMPLATES.find((tpl) => tpl.id === id);
     onChange({
       ...themeConfig,
@@ -51,17 +27,10 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
   };
 
   const handleFontSelect = (fontId: FontFamily) => {
-    const isLocked = plan === 'free' && !UNLOCKED_FREE_FONTS.includes(fontId);
-    if (isLocked) {
-      setLockedFeatureName(`Font Tipografi Eksklusif (${fontId})`);
-      setIsPricingModalOpen(true);
-      return;
-    }
     onChange({ ...themeConfig, fontFamily: fontId });
   };
 
   return (
-    <>
       <div className="space-y-6">
         {/* Template Cards */}
         <div>
@@ -70,17 +39,14 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
               <LayoutGrid className="w-4 h-4 text-indigo-500" />
               {t.chooseTemplate}
             </span>
-            {plan === 'free' && (
-              <span className="text-[10px] text-amber-500 font-bold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                Free: 5 Tema Terbuka (19 Tema PRO)
-              </span>
-            )}
+            <span className="text-[10px] text-emerald-700 dark:text-emerald-300 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full">
+              Semua tema bebas dipakai
+            </span>
           </label>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {TEMPLATES.map((tpl) => {
               const isSelected = themeConfig.templateId === tpl.id;
-              const isLocked = plan === 'free' && !UNLOCKED_FREE_TEMPLATES.includes(tpl.id);
               return (
                 <button
                   key={tpl.id}
@@ -89,8 +55,6 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
                   className={`text-left p-3.5 rounded-xl border transition-all relative overflow-hidden flex flex-col justify-between ${
                     isSelected
                       ? 'border-indigo-600 dark:border-indigo-400 ring-2 ring-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-950/40 shadow-sm'
-                      : isLocked
-                      ? 'border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 opacity-80'
                       : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-900'
                   }`}
                 >
@@ -98,12 +62,6 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-1.5">
                         {t[tpl.nameKey as keyof typeof t] || tpl.id}
-                        {isLocked && (
-                          <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-[9px] font-black px-1.5 py-0.5 rounded flex items-center gap-0.5">
-                            <Lock className="w-2.5 h-2.5" />
-                            PRO
-                          </span>
-                        )}
                       </span>
                       {isSelected && (
                         <span className="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">
@@ -126,11 +84,6 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
                         {tpl.defaultFont}
                       </span>
                     </div>
-                    {isLocked && (
-                      <span className="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
-                        Unlock PRO &rarr;
-                      </span>
-                    )}
                   </div>
                 </button>
               );
@@ -189,14 +142,11 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
               onChange={(e) => handleFontSelect(e.target.value as FontFamily)}
               className="w-full text-xs font-medium bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2.5 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:outline-hidden"
             >
-              {FONT_OPTIONS.map((f) => {
-                const isLocked = plan === 'free' && !UNLOCKED_FREE_FONTS.includes(f.id);
-                return (
+              {FONT_OPTIONS.map((f) => (
                   <option key={f.id} value={f.id}>
-                    {f.name} {isLocked ? '🔒 (PRO)' : ''}
+                    {f.name}
                   </option>
-                );
-              })}
+              ))}
             </select>
           </div>
 
@@ -225,13 +175,5 @@ export const ThemeTemplatePicker: React.FC<ThemeTemplatePickerProps> = ({
           </div>
         </div>
       </div>
-
-      <PricingModal
-        isOpen={isPricingModalOpen}
-        onClose={() => setIsPricingModalOpen(false)}
-        language={language}
-        lockedFeatureName={lockedFeatureName}
-      />
-    </>
   );
 };

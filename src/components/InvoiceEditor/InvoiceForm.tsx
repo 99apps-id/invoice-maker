@@ -8,7 +8,6 @@ import {
   FileText,
   Palette,
   RefreshCw,
-  Lock,
 } from 'lucide-react';
 import type { Client, CurrencyCode, Invoice, LineItem, UserProfile, Language } from '../../types';
 import { getTranslation } from '../../i18n/translations';
@@ -20,8 +19,6 @@ import { ThemeTemplatePicker } from './ThemeTemplatePicker';
 import { ClientSelectorModal } from './ClientSelectorModal';
 import { CatalogSelectorModal } from './CatalogSelectorModal';
 import { QrisCropperModal } from '../UI/QrisCropperModal';
-import { useAuth } from '../../context/AuthContext';
-import { PricingModal } from '../SaaS/PricingModal';
 
 interface InvoiceFormProps {
   invoice: Invoice;
@@ -41,12 +38,10 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
   language,
 }) => {
   const t = getTranslation(language);
-  const { plan } = useAuth();
   const [activeTab, setActiveTab] = useState<'content' | 'theme'>('content');
   const [isClientModalOpen, setIsClientModalOpen] = useState(false);
   const [isCatalogModalOpen, setIsCatalogModalOpen] = useState(false);
   const [isQrisModalOpen, setIsQrisModalOpen] = useState(false);
-  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
 
   // Field change handler
   const updateInvoice = <K extends keyof Invoice>(key: K, value: Invoice[K]) => {
@@ -619,12 +614,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-slate-700 dark:text-slate-300 block flex items-center gap-1.5">
                     <span>Barcode QRIS Statis (Opsional)</span>
-                    {plan === 'free' && (
-                      <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-[9px] font-black px-1.5 py-0.5 rounded flex items-center gap-0.5">
-                        <Lock className="w-2.5 h-2.5" />
-                        PRO
-                      </span>
-                    )}
                   </label>
                 </div>
                 <div className="flex items-center justify-between gap-3">
@@ -643,16 +632,9 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
 
                   <button
                     type="button"
-                    onClick={() => {
-                      if (plan === 'free') {
-                        setIsPricingModalOpen(true);
-                      } else {
-                        setIsQrisModalOpen(true);
-                      }
-                    }}
+                    onClick={() => setIsQrisModalOpen(true)}
                     className="px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 text-xs font-bold rounded-lg border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition flex items-center gap-1"
                   >
-                    {plan === 'free' && <Lock className="w-3 h-3 text-amber-500" />}
                     <span>{invoice.issuer.qrisUrl ? 'Ubah / Potong QRIS' : 'Upload & Crop QRIS'}</span>
                   </button>
                 </div>
@@ -726,12 +708,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
         language={language}
       />
 
-      <PricingModal
-        isOpen={isPricingModalOpen}
-        onClose={() => setIsPricingModalOpen(false)}
-        language={language}
-        lockedFeatureName="Barcode QRIS Statis"
-      />
     </div>
   );
 };

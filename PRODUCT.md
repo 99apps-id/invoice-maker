@@ -10,7 +10,7 @@ Pemilik UMKM, freelancer, toko kecil, dan tim operasional Indonesia yang ingin m
 
 ## Product Purpose
 
-Tagih Dong membantu pengguna membuat invoice yang rapi, menyimpan data usaha dan pelanggan, serta memantau aktivitas penagihan. Keberhasilan berarti pengguna dapat menyelesaikan pekerjaan dengan cepat, memahami status datanya, dan percaya bahwa informasi yang ditampilkan benar-benar berasal dari sistem.
+Tagih Dong membantu pengguna membuat invoice yang rapi, menyimpan data usaha dan pelanggan, serta memantau aktivitas penagihan. Seluruh fitur tersedia gratis tanpa pembagian paket. Keberhasilan berarti pengguna dapat menyelesaikan pekerjaan dengan cepat, memahami status datanya, dan percaya bahwa informasi yang ditampilkan benar-benar berasal dari sistem.
 
 ## Brand Personality
 
@@ -23,6 +23,7 @@ Hindari dashboard yang penuh dekorasi, metrik contoh yang tampak nyata, aksi sem
 ## Design Principles
 
 - Data nyata lebih penting daripada kesan ramai.
+- Semua fitur inti bebas digunakan tanpa paywall atau watermark promosi.
 - Tindakan dan status harus jujur tentang dampaknya.
 - Bahasa ringkas, bersahabat, dan mudah dipahami pelaku UMKM.
 - Informasi penting mudah dipindai pada desktop maupun layar kecil.

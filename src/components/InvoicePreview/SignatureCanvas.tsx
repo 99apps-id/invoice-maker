@@ -1,9 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Eraser, Upload, Lock } from 'lucide-react';
+import { Eraser, Upload } from 'lucide-react';
 import { getTranslation } from '../../i18n/translations';
 import type { Language } from '../../types';
-import { useAuth } from '../../context/AuthContext';
-import { PricingModal } from '../SaaS/PricingModal';
 
 interface SignatureCanvasProps {
   value?: string; // Data URL or Image URL
@@ -16,8 +14,6 @@ export const SignatureCanvas: React.FC<SignatureCanvasProps> = ({
   onChange,
   language,
 }) => {
-  const { plan } = useAuth();
-  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [mode, setMode] = useState<'draw' | 'upload'>('draw');
@@ -143,29 +139,7 @@ export const SignatureCanvas: React.FC<SignatureCanvasProps> = ({
         </div>
       </div>
 
-      {plan === 'free' ? (
-        <div
-          onClick={() => setIsPricingModalOpen(true)}
-          className="border-2 border-dashed border-amber-300 dark:border-amber-700/60 rounded-xl p-6 text-center bg-amber-50/40 dark:bg-amber-950/20 cursor-pointer hover:bg-amber-100/50 transition relative overflow-hidden group"
-        >
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <div className="w-10 h-10 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center border border-amber-500/30">
-              <Lock className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center justify-center gap-1">
-                <span>Tanda Tangan Digital Canvas (Fitur PRO)</span>
-              </p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                Text "Hormat Kami / Authorized Signature" & Nama tetap muncul di faktur gratis. Upgrade ke PRO untuk menggambar / upload file TTD digital.
-              </p>
-            </div>
-            <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-800 group-hover:scale-105 transition">
-              Upgrade ke PRO untuk Mengaktifkan &rarr;
-            </span>
-          </div>
-        </div>
-      ) : mode === 'draw' ? (
+      {mode === 'draw' ? (
         <div className="relative border border-slate-300 dark:border-slate-700 rounded-xl overflow-hidden bg-white dark:bg-slate-900">
           <canvas
             ref={canvasRef}
@@ -218,13 +192,6 @@ export const SignatureCanvas: React.FC<SignatureCanvasProps> = ({
           )}
         </div>
       )}
-
-      <PricingModal
-        isOpen={isPricingModalOpen}
-        onClose={() => setIsPricingModalOpen(false)}
-        language={language}
-        lockedFeatureName="Tanda Tangan Digital Canvas"
-      />
     </div>
   );
 };

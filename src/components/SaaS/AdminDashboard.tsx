@@ -8,7 +8,7 @@ import {
   Search,
   ShieldCheck,
   Users,
-  WalletCards,
+  UserRoundCheck,
 } from 'lucide-react';
 import type { AppTheme } from '../../types';
 
@@ -26,7 +26,6 @@ interface AdminUserItem {
   email: string;
   picture?: string;
   role: 'admin' | 'user';
-  plan: 'free' | 'paid';
   joinedAt: string;
   profilesCount: number;
   invoicesCount: number;
@@ -91,7 +90,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           email: String(item.email),
           picture: item.picture ? String(item.picture) : undefined,
           role: item.role === 'admin' ? 'admin' : 'user',
-          plan: item.plan === 'paid' ? 'paid' : 'free',
           joinedAt: String(item.created_at),
           profilesCount: Number(item.profiles_count) || 0,
           invoicesCount: Number(item.invoices_count) || 0,
@@ -130,7 +128,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       users: users.length,
       businesses: users.reduce((sum, user) => sum + user.profilesCount, 0),
       invoices: users.reduce((sum, user) => sum + user.invoicesCount, 0),
-      paidPlans: users.filter((user) => user.plan === 'paid').length,
+      activeAccounts: users.length,
     }),
     [users]
   );
@@ -172,7 +170,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           { label: 'Pengguna', value: stats.users, icon: Users },
           { label: 'Profil usaha', value: stats.businesses, icon: Building2 },
           { label: 'Invoice tersimpan', value: stats.invoices, icon: FileText },
-          { label: 'Paket berbayar', value: stats.paidPlans, icon: WalletCards },
+          { label: 'Akun aktif', value: stats.activeAccounts, icon: UserRoundCheck },
         ].map(({ label, value, icon: Icon }) => (
           <div key={label} className={`rounded-xl border p-4 ${panel}`}>
             <div className="flex items-center justify-between gap-3">
@@ -233,7 +231,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 <tr>
                   <th className="px-4 py-3 font-semibold">Pengguna</th>
                   <th className="px-4 py-3 font-semibold">Peran</th>
-                  <th className="px-4 py-3 font-semibold">Paket</th>
                   <th className="px-4 py-3 text-right font-semibold">Profil</th>
                   <th className="px-4 py-3 text-right font-semibold">Invoice</th>
                   <th className="px-4 py-3 text-right font-semibold">Nilai item</th>
@@ -244,7 +241,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 {loading
                   ? Array.from({ length: 4 }).map((_, index) => (
                       <tr key={index}>
-                        <td colSpan={7} className="px-4 py-4">
+                        <td colSpan={6} className="px-4 py-4">
                           <div className={`h-9 animate-pulse rounded-lg ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`} />
                         </td>
                       </tr>
@@ -271,11 +268,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             {user.role === 'admin' ? 'Admin' : 'Pengguna'}
                           </span>
                         </td>
-                        <td className="px-4 py-4">
-                          <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${user.plan === 'paid' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'}`}>
-                            {user.plan === 'paid' ? 'Berbayar' : 'Gratis'}
-                          </span>
-                        </td>
                         <td className="px-4 py-4 text-right tabular-nums">{user.profilesCount}</td>
                         <td className="px-4 py-4 text-right tabular-nums">{user.invoicesCount}</td>
                         <td className="px-4 py-4 text-right font-medium tabular-nums">{formatCurrency(user.totalVolume)}</td>
@@ -289,7 +281,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     ))}
                 {!loading && filteredUsers.length === 0 && (
                   <tr>
-                    <td colSpan={7} className={`px-4 py-14 text-center ${muted}`}>
+                    <td colSpan={6} className={`px-4 py-14 text-center ${muted}`}>
                       {users.length === 0
                         ? 'Belum ada pengguna yang terdaftar.'
                         : 'Tidak ada pengguna yang cocok dengan pencarian.'}

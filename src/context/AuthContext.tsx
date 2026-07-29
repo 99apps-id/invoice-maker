@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useState, useEffect } from 'react';
-import type { UserProfile, UserPlan } from '../types';
+import type { UserProfile } from '../types';
 
 export interface User {
   id: string;
@@ -7,7 +7,6 @@ export interface User {
   name: string;
   picture?: string;
   role?: string;
-  plan?: UserPlan;
 }
 
 interface AuthContextType {
@@ -15,7 +14,6 @@ interface AuthContextType {
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  plan: UserPlan;
   loginWithGoogle: (credentialResponse: any) => Promise<boolean>;
   updateUserProfile: (data: { name?: string; picture?: string }) => Promise<void>;
   logout: () => void;
@@ -113,18 +111,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const [plan, setPlanState] = useState<UserPlan>(() => {
-    return (user?.plan as UserPlan) || 'free';
-  });
-
-  useEffect(() => {
-    if (user?.plan) {
-      setPlanState(user.plan);
-    } else {
-      setPlanState('free');
-    }
-  }, [user]);
-
   const updateUserProfile = async (data: { name?: string; picture?: string }) => {
     if (!user) return;
     if (token) {
@@ -151,7 +137,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
     setToken(null);
     setUserProfiles([]);
-    setPlanState('free');
     sessionStorage.removeItem(TOKEN_KEY);
     sessionStorage.removeItem(USER_KEY);
     localStorage.removeItem('tagihdong_jwt_token_v1');
@@ -165,7 +150,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         token,
         isAuthenticated: !!user && !!token,
         isLoading,
-        plan,
         loginWithGoogle,
         updateUserProfile,
         logout,
