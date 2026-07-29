@@ -1,0 +1,53 @@
+{
+  "name": "tagih-dong",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pembuat Invoice & Faktur Bisnis Profesional — 100% Gratis. Dibuat khusus untuk UMKM, toko retail, dan freelancer di Indonesia.",
+  "author": "99apps.id <support@99apps.id>",
+  "license": "MIT",
+  "homepage": "https://github.com/99apps-id/invoice-maker#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/99apps-id/invoice-maker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/99apps-id/invoice-maker/issues"
+  },
+  "keywords": [
+    "invoice",
+    "faktur",
+    "umkm",
+    "freelancer",
+    "qris",
+    "pdf",
+    "react",
+    "typescript",
+    "indonesia"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "canvas-confetti": "^1.9.4",
+    "lucide-react": "^1.27.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}

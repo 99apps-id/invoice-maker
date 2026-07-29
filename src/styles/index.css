@@ -1,0 +1,154 @@
+/* Hallmark Design System & Global Styles */
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+    --font-space: 'Space Grotesk', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Typography Utilities */
+.font-sans { font-family: var(--font-inter); }
+.font-jakarta { font-family: var(--font-jakarta); }
+.font-space { font-family: var(--font-space); }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Microinteraction classes */
+.btn-hallmark {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-hallmark:hover {
+  transform: translateY(-1px);
+}
+.btn-hallmark:active {
+  transform: translateY(0.5px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.75);
+}
+
+/* Watermark Stamp Styling */
+.watermark-stamp {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.5rem 2rem;
+  border-width: 6px;
+  border-style: double;
+  border-radius: 8px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.16;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.watermark-paid {
+  color: #16a34a;
+  border-color: #16a34a;
+}
+.watermark-pending {
+  color: #d97706;
+  border-color: #d97706;
+}
+.watermark-overdue {
+  color: #dc2626;
+  border-color: #dc2626;
+}
+.watermark-draft {
+  color: #4b5563;
+  border-color: #4b5563;
+}
+
+/* Page Setup for Full A4 Printing */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+/* Printable PDF / Print CSS rules */
+@media print {
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    overflow: hidden !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .printable-invoice-container {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 12mm 15mm !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    overflow: hidden !important;
+  }
+
+  .printable-invoice {
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  /* Keep multi-column layouts intact in print */
+  .grid-cols-1 {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+
+  /* Prevent row cut-off */
+  tr, .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Force background colors and colors to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

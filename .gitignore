@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+**/node_modules/
+server/node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+
+# Environment & Secret files (DO NOT COMMIT SECRETS / TOKENS / ENV TO GITHUB)
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+server/.env.*
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+secrets/
+secret/
+*.p12
+*.pfx
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# TypeScript & Cache
+*.tsbuildinfo
+.cache/
+.oxlint-cache
+
+# Coverage
+coverage/
+*.lcov
+
+# Misc
+*.local

@@ -1,0 +1,372 @@
+import type { Language } from '../types';
+
+export const translations = {
+  id: {
+    // General UI
+    appName: 'Tagih Dong',
+    appSubtitle: 'Pembuat Invoice Profesional & Multi-Profil Usaha',
+    activeProfile: 'Profil Aktif',
+    switchProfile: 'Ganti Profil',
+    newProfile: 'Tambah Profil Baru',
+    manageProfiles: 'Kelola Profil Business',
+    language: 'Bahasa',
+    theme: 'Tema Aplikasi',
+    dark: 'Gelap',
+    light: 'Terang',
+
+    // Navigation
+    navEditor: 'Buat Faktur',
+    navHistory: 'Riwayat Faktur',
+    navClients: 'Daftar Klien',
+    navCatalog: 'Katalog Produk/Jasa',
+    navProfiles: 'Profil Usaha',
+    navAdmin: 'Halaman Admin',
+
+    // Invoice Form & Preview
+    invoiceTitle: 'INVOICE',
+    invoiceDataTab: 'Data Invoice',
+    invoiceDataHeader: 'DATA INVOICE',
+    invoiceNumber: 'Nomor Faktur',
+    poNumber: 'Nomor PO / Order',
+    issueDate: 'Tanggal Terbit',
+    dueDate: 'Jatuh Tempo',
+    status: 'Status',
+    statusDraft: 'Draf',
+    statusPending: 'Menunggu Pembayaran',
+    statusPaid: 'Lunas',
+    statusOverdue: 'Jatuh Tempo',
+
+    // Parties
+    fromIssuer: 'Dari (Penerbit Tagihan)',
+    toClient: 'Kepada (Klien / Pembeli)',
+    selectClient: 'Pilih Klien Tersimpan',
+    addClientQuick: 'Tambah Klien Baru',
+    companyName: 'Nama Perusahaan / Bisnis',
+    ownerName: 'Nama Pemilik / Contact Person',
+    email: 'Alamat Email',
+    phone: 'Nomor Telepon',
+    address: 'Alamat Lengkap',
+    taxId: 'NPWP',
+    website: 'Situs Web',
+
+    // Payment details
+    paymentDetails: 'Informasi Pembayaran & Bank',
+    bankName: 'Nama Bank',
+    accountNo: 'Nomor Rekening',
+    accountName: 'Nama Pemilik Rekening',
+    swiftCode: 'Kode SWIFT / BIC',
+    qrisUrl: 'QRIS / QR Payment (URL/Teks)',
+    notes: 'Catatan untuk Klien',
+    paymentTerms: 'Syarat & Ketentuan Pembayaran',
+
+    // Items Table
+    itemDetails: 'Rincian Barang / Jasa',
+    addItem: 'Tambah Baris Item',
+    selectFromCatalog: 'Pilih dari Katalog',
+    itemDescription: 'Deskripsi Pekerjaan / Produk',
+    qty: 'Jumlah',
+    unit: 'Satuan',
+    price: 'Harga Satuan',
+    tax: 'Pajak',
+    discount: 'Diskon',
+    amount: 'Total Total',
+
+    // Calculations
+    subtotal: 'Subtotal',
+    taxTotal: 'Total Pajak',
+    discountTotal: 'Total Diskon',
+    shipping: 'Biaya Pengiriman',
+    grandTotal: 'Total Tagihan',
+    amountDue: 'Sisa Pembayaran',
+
+    // Template & Styling
+    templateSettings: 'Desain & Template',
+    chooseTemplate: 'Pilih Template Faktur',
+    accentColor: 'Warna Aksen Utama',
+    typography: 'Pilihan Font',
+    layoutDensity: 'Kepadatan Tata Letak',
+    densityCompact: 'Padat',
+    densityStandard: 'Standar',
+    densitySpacious: 'Longgar',
+    watermark: 'Watermark Status (Stempel)',
+    showQr: 'Tampilkan QR Code Pembayaran',
+    showSignature: 'Tampilkan Tanda Tangan Digital',
+    digitalSignature: 'Tanda Tangan Digital',
+    drawSignature: 'Gambar Tanda Tangan',
+    clearSignature: 'Hapus Tanda Tangan',
+
+    // Actions
+    saveInvoice: 'Simpan Faktur',
+    updateInvoice: 'Perbarui Faktur',
+    exportPdf: 'Cetak / Unduh PDF',
+    downloadJson: 'Unduh JSON',
+    duplicate: 'Duplikat Faktur',
+    markPaid: 'Tandai Lunas',
+    delete: 'Hapus',
+    cancel: 'Batal',
+    edit: 'Edit',
+    search: 'Cari invoice atau klien...',
+    filterStatus: 'Semua Status',
+    
+    // CRM & Catalog
+    clientsTitle: 'Manajemen Klien',
+    newClient: 'Tambah Klien Baru',
+    catalogTitle: 'Katalog Produk & Layanan',
+    newItem: 'Tambah Produk/Jasa Baru',
+    saveClient: 'Simpan Klien',
+    saveCatalogItem: 'Simpan ke Katalog',
+
+    // Business Types & Categories
+    businessTypeLabel: 'Tipe Perusahaan / Kategori Usaha',
+    btTrading: 'Perusahaan Dagang (Kategori Produk/Barang)',
+    btService: 'Perusahaan Jasa (Kategori Jasa)',
+    btRepair: 'Bengkel (Kategori Produk/Barang & Jasa)',
+    btRetail: 'Toko (Kategori Produk/Barang & Jasa)',
+    btGeneral: 'Perusahaan Umum / Lainnya (Kategori Produk/Barang & Jasa)',
+    catAll: 'Semua Kategori',
+    catProduct: '📦 Produk / Barang',
+    catService: '🛠️ Jasa / Layanan',
+    selectCategory: 'Pilih Kategori Item',
+
+    // Profiles Manager
+    profilesTitle: 'Kelola Profil Bisnis (Multi-User)',
+    profileDescription: 'Buat dan kelola beberapa identitas bisnis atau usaha untuk menerbitkan faktur berbeda.',
+    activeBadge: 'Profil Utama Active',
+    makeDefault: 'Jadikan Utama',
+
+    // Stats Dashboard
+    totalInvoices: 'Total Faktur',
+    totalRevenue: 'Total Pendapatan',
+    pendingAmount: 'Tagihan Pending',
+    paidCount: 'Faktur Lunas',
+
+    // Templates names
+    tplModern: 'Modern Minimalis',
+    tplEditorial: 'Ketik Editorial (Koran Classic)',
+    tplAtmospheric: 'Dark Cyber (Toko Tech)',
+    tplCorporate: 'Eksekutif Sapphire (Corporate)',
+    tplRisograph: 'Kreatif Studio (Risograph)',
+    tplMinimalMono: 'Arsitek Mono (B&W Minimal)',
+    tplSwiss: 'Swiss Grid Typographic',
+    tplBoutique: 'Emerald Gold Boutique (Mewah)',
+    tplTechNeo: 'Tech Neo Glass (SaaS & Dev)',
+    tplWarmArtisan: 'Warm Artisan (Kafe & Bakery)',
+    tplMetroCompact: 'Executive Metro Split',
+    tplPastelPop: 'Modern Pastel Pop (Studio)',
+    tplSidebarLayout: 'Format Sidebar Kiri (2-Kolom Vertikal)',
+    tplHeroBanner: 'Format Banner Hero Atas',
+    tplReceiptTicket: 'Format Struk Kasir / Tiket Perforasi',
+    tplClassicLetterhead: 'Format Kop Surat Klasik (Simetris)',
+    tplDuotoneSplit: 'Format Blok Dwi-Warna (Kontras)',
+    tplTerminalConsole: 'Format Konsol Terminal CLI (Hacker)',
+    tplMinimalTable: 'Format Tabel Ultra Minimalis',
+    tplCertifiedTax: 'Format Faktur Resmi / Audit',
+    tplCardGridTiles: 'Format Ubin Kartu Grid (Modul)',
+    tplAsymmetric: 'Format Asimetris Offset Kreatif',
+    tplCompactSlip: 'Format Slip Order Ringkas',
+    tplLuxuryGold: 'Format Monogram Emas Premium',
+
+    // Confirmations & Toast
+    savedSuccess: 'Faktur berhasil disimpan!',
+    copiedSuccess: 'Berhasil disalin!',
+    confirmDelete: 'Apakah Anda yakin ingin menghapus data ini?',
+    congratsPaid: 'Selamat! Faktur telah ditandai Lunas 🎉',
+
+    // Additional paper & form keys
+    authorizedSignature: 'Hormat Kami',
+    bankTransfer: 'Transfer Bank',
+    electronicDocNote: 'Dokumen ini diterbitkan sah secara sistem elektronik.',
+    scanQrisPayment: 'Scan QRIS / QR Payment',
+    qrisAppsNote: 'Scan via BCA Mobile, GoPay, OVO, ShopeePay, atau m-Banking.',
+    officialDoc: 'DOKUMEN RESMI / CERTIFIED',
+    gridModules: 'Rincian Item (Grid Modules)',
+    pricePerUnit: '/ unit',
+    taxableSubtotal: 'Total DPP',
+  },
+  en: {
+    // General UI
+    appName: 'Tagih Dong',
+    appSubtitle: 'Professional Multi-User Invoice Maker',
+    activeProfile: 'Active Profile',
+    switchProfile: 'Switch Profile',
+    newProfile: 'Add New Profile',
+    manageProfiles: 'Manage Business Profiles',
+    language: 'Language',
+    theme: 'App Theme',
+    dark: 'Dark',
+    light: 'Light',
+
+    // Navigation
+    navEditor: 'Create Invoice',
+    navHistory: 'Invoice History',
+    navClients: 'Clients CRM',
+    navCatalog: 'Product Catalog',
+    navProfiles: 'Business Profiles',
+    navAdmin: 'Admin Dashboard',
+
+    // Invoice Form & Preview
+    invoiceTitle: 'INVOICE',
+    invoiceDataTab: 'Invoice Data',
+    invoiceDataHeader: 'INVOICE DATA',
+    invoiceNumber: 'Invoice Number',
+    poNumber: 'PO / Order Ref',
+    issueDate: 'Issue Date',
+    dueDate: 'Due Date',
+    status: 'Status',
+    statusDraft: 'Draft',
+    statusPending: 'Pending Payment',
+    statusPaid: 'Paid',
+    statusOverdue: 'Overdue',
+
+    // Parties
+    fromIssuer: 'From (Issuer)',
+    toClient: 'Billed To (Client)',
+    selectClient: 'Select Saved Client',
+    addClientQuick: 'Add New Client',
+    companyName: 'Company / Business Name',
+    ownerName: 'Owner / Contact Person',
+    email: 'Email Address',
+    phone: 'Phone Number',
+    address: 'Full Address',
+    taxId: 'Tax ID / VAT Reg',
+    website: 'Website URL',
+
+    // Payment details
+    paymentDetails: 'Payment Details & Banking',
+    bankName: 'Bank Name',
+    accountNo: 'Account Number',
+    accountName: 'Account Holder Name',
+    swiftCode: 'SWIFT / BIC Code',
+    qrisUrl: 'QR Payment (URL/Data)',
+    notes: 'Client Notes',
+    paymentTerms: 'Payment Terms & Conditions',
+
+    // Items Table
+    itemDetails: 'Line Items',
+    addItem: 'Add Line Item',
+    selectFromCatalog: 'Pick from Catalog',
+    itemDescription: 'Item Description / Service',
+    qty: 'Qty',
+    unit: 'Unit',
+    price: 'Unit Price',
+    tax: 'Tax',
+    discount: 'Discount',
+    amount: 'Amount',
+
+    // Calculations
+    subtotal: 'Subtotal',
+    taxTotal: 'Tax Total',
+    discountTotal: 'Total Discount',
+    shipping: 'Shipping / Handling',
+    grandTotal: 'Grand Total',
+    amountDue: 'Amount Due',
+
+    // Template & Styling
+    templateSettings: 'Design & Template',
+    chooseTemplate: 'Select Invoice Template',
+    accentColor: 'Primary Accent Color',
+    typography: 'Typography Font',
+    layoutDensity: 'Layout Density',
+    densityCompact: 'Compact',
+    densityStandard: 'Standard',
+    densitySpacious: 'Spacious',
+    watermark: 'Status Watermark Stamp',
+    showQr: 'Show Payment QR Code',
+    showSignature: 'Show Digital Signature',
+    digitalSignature: 'Digital Signature',
+    drawSignature: 'Draw Signature',
+    clearSignature: 'Clear Canvas',
+
+    // Actions
+    saveInvoice: 'Save Invoice',
+    updateInvoice: 'Update Invoice',
+    exportPdf: 'Print / Export PDF',
+    downloadJson: 'Download JSON',
+    duplicate: 'Duplicate Invoice',
+    markPaid: 'Mark as Paid',
+    delete: 'Delete',
+    cancel: 'Cancel',
+    edit: 'Edit',
+    search: 'Search invoice or client...',
+    filterStatus: 'All Statuses',
+
+    // CRM & Catalog
+    clientsTitle: 'Client Management',
+    newClient: 'Add New Client',
+    catalogTitle: 'Products & Services Catalog',
+    newItem: 'Add Catalog Item',
+    saveClient: 'Save Client',
+    saveCatalogItem: 'Save Item',
+
+    // Business Types & Categories
+    businessTypeLabel: 'Company Type / Category',
+    btTrading: 'Trading Company (Products/Goods Only)',
+    btService: 'Services Firm (Services Only)',
+    btRepair: 'Auto Repair / Workshop (Goods & Services)',
+    btRetail: 'Retail Store (Goods & Services)',
+    btGeneral: 'General Business / Other (Goods & Services)',
+    catAll: 'All Categories',
+    catProduct: '📦 Products / Goods',
+    catService: '🛠️ Services / Labor',
+    selectCategory: 'Select Item Category',
+
+    // Profiles Manager
+    profilesTitle: 'Manage Business Profiles (Multi-User)',
+    profileDescription: 'Create and manage multiple business identities to issue invoices from different entities.',
+    activeBadge: 'Active Default Profile',
+    makeDefault: 'Set as Default',
+
+    // Stats Dashboard
+    totalInvoices: 'Total Invoices',
+    totalRevenue: 'Total Revenue',
+    pendingAmount: 'Pending Payments',
+    paidCount: 'Paid Invoices',
+
+    // Templates names
+    tplModern: 'Modern Minimalist',
+    tplEditorial: 'Classic Editorial',
+    tplAtmospheric: 'Dark Cyber Tech',
+    tplCorporate: 'Corporate Sapphire',
+    tplRisograph: 'Creative Risograph',
+    tplMinimalMono: 'Architectural Mono',
+    tplSwiss: 'Swiss Grid Typographic',
+    tplBoutique: 'Emerald Gold Boutique',
+    tplTechNeo: 'Tech Neo Glass',
+    tplWarmArtisan: 'Warm Artisan Cafe',
+    tplMetroCompact: 'Executive Metro Split',
+    tplPastelPop: 'Modern Pastel Pop',
+    tplSidebarLayout: 'Left Sidebar 2-Column Layout',
+    tplHeroBanner: 'Top Hero Banner Layout',
+    tplReceiptTicket: 'Receipt & Voucher Ticket',
+    tplClassicLetterhead: 'Classic Center Letterhead',
+    tplDuotoneSplit: 'Duo-Tone Block Split',
+    tplTerminalConsole: 'CLI Terminal Console',
+    tplMinimalTable: 'Ultra Minimalist Table',
+    tplCertifiedTax: 'Certified Official Invoice',
+    tplCardGridTiles: 'Card Grid Tiles Format',
+    tplAsymmetric: 'Asymmetric Offset Layout',
+    tplCompactSlip: 'Compact Order Slip',
+    tplLuxuryGold: 'Monogram Gold Premium',
+
+    // Confirmations & Toast
+    savedSuccess: 'Invoice successfully saved!',
+    copiedSuccess: 'Copied to clipboard!',
+    confirmDelete: 'Are you sure you want to delete this data?',
+    congratsPaid: 'Congratulations! Invoice marked as Paid 🎉',
+
+    // Additional paper & form keys
+    authorizedSignature: 'Authorized Signature',
+    bankTransfer: 'Bank Transfer',
+    electronicDocNote: 'This document is electronically generated and valid without signature.',
+    scanQrisPayment: 'Scan QR Code Payment',
+    qrisAppsNote: 'Scan with mobile banking or e-wallet apps.',
+    officialDoc: 'OFFICIAL DOCUMENT / CERTIFIED',
+    gridModules: 'Line Items (Grid Modules)',
+    pricePerUnit: '/ unit',
+    taxableSubtotal: 'Taxable Subtotal',
+  }
+};
+
+export function getTranslation(lang: Language) {
+  return translations[lang] || translations.id;
+}

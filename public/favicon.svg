@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="sheetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background Icon Container -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Document Sheet -->
+  <path d="M18 14 C18 12.8954 18.8954 12 20 12 H36 L46 22 V48 C46 49.1046 45.1046 50 44 50 H20 C18.8954 50 18 49.1046 18 48 V14 Z" fill="url(#sheetGrad)" filter="url(#shadow)" />
+  
+  <!-- Folded Corner -->
+  <path d="M36 12 L46 22 H38 C36.8954 22 36 21.1046 36 20 V12 Z" fill="#cbd5e1" />
+
+  <!-- Text / Line Details -->
+  <line x1="24" y1="20" x2="31" y2="20" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" />
+  <line x1="24" y1="26" x2="40" y2="26" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+  <line x1="24" y1="31" x2="36" y2="31" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Verified Checkmark Circle Badge -->
+  <circle cx="38" cy="40" r="10" fill="#10b981" />
+  <path d="M33.5 40 L36.5 43 L42.5 37" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

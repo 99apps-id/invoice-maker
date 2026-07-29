@@ -1,0 +1,5 @@
+# Server specific ignored files
+node_modules/
+.env
+.env.*
+*.log
